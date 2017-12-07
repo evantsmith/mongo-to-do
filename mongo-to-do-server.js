@@ -103,7 +103,6 @@ app.post('/crossOut', function(req,res){
                     res.status(500).send(error);
                 } else {
                     console.log("Saved the task to database");
-                    // send back the newly created task object with _id property and other properties, like isCompleted property
                     res.send(task);
                 };
             });
