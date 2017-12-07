@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Vue -->
+        <script src="https://unpkg.com/vue"></script>
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="/css/mongo-to-do-main.css">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+        <div id = 'vue1' class="container-fluid" >
+            <div id="heading" class="row" >
+                <div id="head" class="col-12">To do list</div>
+            </div>
+            <!-- (C)reate new task in database (and browser)-->
+            <form id ='form1' class="row" v-on:submit="addTaskToDo">
+                <div id="label1" class="col-3">Enter a task to add to your to-do list: </div>
+                <input type="text" id="taskInput" class="col-4 float-left" v-model="taskToDo" placeholder="Type in a task to add to the list">
+                <!-- Submit -->
+                <button id="addTaskButton" class="col-2 float-left" type="submit">Add Task</button>
+            </form>
+
+            <!-- List of things to do -->
+            <div class="row" id="results">
+            <ul>
+                <!-- (R)ead current tasks in database (and front-end) and display -->
+                <li id="listTask" v-for='(task, index) in tasksToDo'>
+
+                    <!-- (U)pdate task object in database (and browser) -->
+                    <input id="checkbox" v-bind:class="{taskDone: task.isCompleted}" type="checkbox" v-on:click="crossOut(task, index, $event)" v-model="task.isCompleted"/>
+
+                    <div id="taskText" v-bind:class="{taskDone: task.isCompleted}">
+                          {{task.taskDescription}}
+                    </div>
+                    
+                    <!-- (D)elete task from database button (and browser)-->
+                    <button v-on:click="removeTask(task, index)" id="removeTaskBttn">
+                        Remove
+                    </button>
+
+                  </div>
+
+                </li>
+            </ul>
+            </div>
+
+
+
+        </div> <!-- End vue1 -->
+
+        <!-- Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
+        </script>
+
+        <!-- Jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+        <!-- Main JS -->
+        <script src="/js/mongo-to-do-main.js"></script> 
+    </body>
+</html>

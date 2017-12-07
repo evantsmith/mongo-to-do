@@ -1,0 +1,26 @@
+{
+  "name": "mongo-to-do",
+  "version": "1.0.0",
+  "description": "Basic CRUD app",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evantsmith/mongo-to-do.git"
+  },
+  "keywords": [
+    "CRUD"
+  ],
+  "author": "Evan Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evantsmith/mongo-to-do/issues"
+  },
+  "homepage": "https://github.com/evantsmith/mongo-to-do#readme"
+}
